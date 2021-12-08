@@ -1,3 +1,4 @@
+import { Console } from "console"
 
 export default class Calculator {
   inputs: string[]
@@ -30,9 +31,46 @@ export default class Calculator {
     else{ this.inputs[this.inputs.length-1] = last.slice(0, -1) }
   }
 
+  reduceByMultipliers(inputList: string[]){
+    // reduces the inputList to remove the multipliers and dividors
+    // returns a list of numbers and + & -
+    var outputList = inputList
+    for(let i = 0; i < outputList.length - 1; i++){
+      // TODO: this loop would be simpler if the operators were objects
+      if(outputList[i+1] === "x"){
+        const a = Number(outputList[i])
+        const b = Number(outputList[i+2])
+        outputList.splice(i, 3, String(a*b))
+        i -= 1
+      }
+      else if(outputList[i+1] === "/"){
+        const a = Number(outputList[i])
+        const b = Number(outputList[i+2])
+        outputList.splice(i, 3, String(a/b))
+        i -= 1
+      }
+    }
+    return outputList
+  }
+
   answer(){
-    let result = this.inputs
     // [\d\.\+\-\\x]+[\d\.]
+    // this method is inherently self-sanitizing (i.e. it will ignore trailing operators)
+    let inputList = this.reduceByMultipliers(this.inputs)
+    let i 
+    let result = Number(inputList[0])
+    for(i = 1; i < inputList.length; i++){
+      switch (inputList[i]) {
+        case "+":
+          result += Number(inputList[i+1])
+          break;
+        case "-":
+          result -= Number(inputList[i+1])
+        default:
+          break;
+      }
+    }
+    return "" + result
   }
 }
 
