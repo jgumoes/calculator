@@ -1,0 +1,29 @@
+.buttonPad {
+  margin: 10px;
+  padding: 10px;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+
+  &--1{
+    @extend .buttonPad;
+    background-color: hsl(223, 31%, 20%);
+  }
+
+  &--2{
+    @extend .buttonPad;
+    background-color: hsl(0, 5%, 81%);
+  }
+
+  &--3{
+    @extend .buttonPad;
+    background-color: hsl(268, 71%, 12%);
+  }
+}
+
+.Row{
+  display: flex;
+  flex-direction: row;
+}

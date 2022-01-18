@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import ButtonPad from './containers/ButtonPad';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Here is the app</Text>
+      <ButtonPad />
       <StatusBar style="auto" />
     </View>
   );
