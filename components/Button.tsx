@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 
 import ButtonStyles from './Button.scss'
 
@@ -12,9 +12,11 @@ export default function Button({ type,  value }: ButtonProps){
   var selectedTheme = 1
   var theme = type + "--" + selectedTheme
   return(
-    <View style={ButtonStyles[theme]}>
-      <Text style={ButtonStyles[theme + "--text"]}>{value}</Text>
-    </View>
+    <Pressable style={ButtonStyles[`${theme}--container`]}>
+      <View style={ButtonStyles[`${theme}--button`]}>
+        <Text style={ButtonStyles[`${theme}--text`]}>{value}</Text>
+      </View>
+    </Pressable>
   )
 }
 

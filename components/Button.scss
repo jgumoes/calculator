@@ -1,11 +1,17 @@
+$button-radius: 5px;
+$button-height: 50px;
+
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  border-bottom: 3px solid;
-  margin: 10px; 
-  flex: 1 1;
+  border-radius: $button-radius;
+  // border-bottom: 3px solid;
+  // margin: 10px; 
+  // flex: 1 1;
+  // width: 100%;
+  height: $button-height;
+  // flex: 1;
 }
 
 .text{
@@ -13,39 +19,63 @@
   font-weight: 700;
 }
 
+.container{
+  padding-bottom: 5px; // shadow thickness
+  display: flex;
+  flex: 1 1;
+  margin: 10px; 
+  border-radius: $button-radius;
+  height: $button-height + $button-radius;
+}
+
 .clearingButton {
   &--1{
-    @extend .button;
-    border-bottom-color: hsl(224, 28%, 35%);
-    background-color: hsl(225, 21%, 49%);
+    &--button{
+      @extend .button;
+      background-color: hsl(225, 21%, 49%);
+    }
     &--text{
       @extend .text;
       color: hsl(0, 0%, 100%);
       font-size: 20px;
+    }
+    &--container{
+      @extend .container;
+      background-color: hsl(224, 28%, 35%);
     }
   }
 } 
 
 .inputButton {
   &--1{
-    @extend .button;
-    border-bottom-color: hsl(28, 16%, 65%);
-    background-color: hsl(30, 25%, 89%);
+    &--button{
+      @extend .button;
+      background-color: hsl(30, 25%, 89%);
+    }
     &--text{
       @extend .text;
       color:hsl(221, 14%, 31%);
+    }
+    &--container{
+      @extend .container;
+      background-color: hsl(28, 16%, 65%);
     }
   }
 }
 
 .equalsButton {
   &--1{
-    @extend .button;
-    border-bottom-color: hsl(6, 70%, 34%);
-    background-color: hsl(6, 63%, 50%);
+    &--button{
+      @extend .button;
+      background-color: hsl(6, 63%, 50%);
+    }
     &--text{
       @extend .text;
       color: hsl(0, 0%, 100%);
+    }
+    &--container{
+      @extend .container;
+      background-color: hsl(6, 70%, 34%);
     }
   }
 } 
